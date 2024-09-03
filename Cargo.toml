@@ -1,0 +1,22 @@
+workspace = { members = ["examples/wasm_basic"] }
+[package]
+name = "theus"
+version = "0.1.0"
+edition = "2021"
+authors = ["Gerald Nash <me@aunyks.com>"]
+description = "A procedural macro for generating C-compatible functions from Rust structs and traits"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/yourusername/theus"
+keywords = ["ffi", "c", "bindings", "macro"]
+categories = ["development-tools::ffi"]
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = { version = "2.0.77", features = ["full"] }
+quote = "1.0.37"
+proc-macro2 = "1.0.86"
+
+[dev-dependencies]
+trybuild = "1.0"
