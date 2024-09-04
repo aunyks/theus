@@ -3,6 +3,7 @@ use theus::c_compatible;
 
 pub struct MyStruct {
     msg: CString,
+    a: i32,
 }
 
 #[c_compatible]
@@ -10,6 +11,7 @@ impl MyStruct {
     pub fn create() -> Self {
         Self {
             msg: CString::new("hey there").unwrap(),
+            a: 3,
         }
     }
 
@@ -37,6 +39,10 @@ impl MyStruct {
 
     pub fn get_num(&mut self) -> String {
         "".to_owned()
+    }
+
+    pub fn get_str_raw(&mut self) -> &mut i32 {
+        &mut self.a
     }
 
     pub fn yo(&mut self) -> Vec<bool> {

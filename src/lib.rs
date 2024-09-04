@@ -310,6 +310,19 @@ pub fn c_compatible(_attr: TokenStream, item: TokenStream) -> TokenStream {
                         } else {
                             (quote! { #type_path }, quote! { #fn_call })
                         }
+                    } else if let Type::Reference(refr) = &**ty {
+                        let inner_type = &*refr.elem;
+                        if refr.mutability.is_some() {
+                            (
+                                quote! { -> *mut #inner_type  },
+                                quote! { #fn_call as *mut #inner_type },
+                            )
+                        } else {
+                            (
+                                quote! { -> *const #inner_type  },
+                                quote! { #fn_call as *const #inner_type },
+                            )
+                        }
                     } else {
                         (quote! { #return_type }, quote! { #fn_call })
                     }

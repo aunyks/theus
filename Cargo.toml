@@ -1,7 +1,7 @@
 workspace = { members = ["examples/wasm_basic"] }
 [package]
 name = "theus"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Gerald Nash <me@aunyks.com>"]
 description = "A procedural macro for generating C-compatible functions from Rust structs and traits"
